@@ -1,0 +1,25 @@
+<h2>Match</h2>
+<p>No funciona</p>
+<form method="post" action="{% url 'match' %}">
+    {% csrf_token %}
+    <select name="word1">
+        <option>caballo</option>
+        <option>pez</option>
+        <option>cigala</option>
+    </select>
+    y
+    <select name="word2">
+        <option>cabello</option>
+        <option>paz</option>
+        <option>cigarro</option>
+    </select>
+    <button type="submit">Procesar</button>
+
+    <h3>Estamos procesando la pareja.</h3>
+</form>
+
+{% if result != None %}
+<p>Mezcla válida: {{ result }} </p>
+{% endif %}
+
+<a href="/">Back</a>

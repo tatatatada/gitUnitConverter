@@ -6,6 +6,24 @@ from django.shortcuts import render
 def home(request):
     return render(request, 'home.html')
 
+def match_game(request):
+    result = "Incorrecto"
+
+    if request.method == 'POST':
+        data = request.POST
+        word1 = data.get('word1')
+        word2 = data.get('word2')
+
+        if (word1, word2) in [
+            ('caballo', 'cabello'),
+            ('pez', 'paz'),
+            ('cigala', 'cigarro')
+            ]:
+            result = "Correcto"
+        
+    return render(request, 'match.html', {'result': result})
+
+
 def length_converter(request):
     result = None
     if request.method == 'POST':
